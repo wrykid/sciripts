@@ -1,0 +1,11 @@
+while true do
+wait(.0000000000000000000000001)
+local args = {
+    [1] = game:GetService("ReplicatedStorage"):WaitForChild("Viewmodels"):WaitForChild("M4"):WaitForChild("Config"):WaitForChild("fireS"),
+    [2] = true,
+    [3] = 1,
+    [5] = "fireS619"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("remote"):WaitForChild("Sound"):FireServer(unpack(args))
+end

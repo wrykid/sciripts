@@ -1,0 +1,110 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Eblanoid v0.0.1 (Game: Standblox)", HidePremium = false, SaveConfig = true, ConfigFolder = "Eblanoid"})
+
+local IsVoteLoop, VoteText = false, "Monkey"
+
+local InfoTab = Window:MakeTab({
+	Name = "Info",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+InfoTab:AddLabel("This script has been made by wrkd")
+InfoTab:AddLabel("Have fun using Eblanoid!!!!!!")
+InfoTab:AddLabel("Discord Invite: ")
+
+local MainTab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local CustomVoteSection = MainTab:AddSection({
+	Name = "Custom Voting (restarts the game if everyone agreed) (no tags)"
+})
+
+CustomVoteSection:AddTextbox({
+	Name = "Custom Vote (you have to add a space after the text)",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(Value)
+           local ohInstance1 = game:GetService("Players").LocalPlayer
+           local ohString2 = (Value)
+           local ohString3 = "restart"
+
+           game:GetService("ReplicatedStorage").remote.Voting.Start.VoteToStart:FireServer(ohInstance1, ohString2, ohString3)
+	end	  
+})
+
+CustomVoteSection:AddTextbox({
+	Name = "Custom Vote Loop (same as the 1st one)",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(Value)
+		VoteText = (Value)
+	end	  
+})
+
+CustomVoteSection:AddToggle({
+	Name = "Toggle Loop",
+	Default = false,
+	Callback = function(Value)
+	 IsVoteLoop = Value
+	       print(Value)
+	       wait()
+	end    
+})
+
+spawn(function()
+	       while true do
+	        wait(3)
+	        if IsVoteLoop then
+	        print(VoteText)
+	        wait(.0000001)
+	        local ohInstance2 = game:GetService("Players").LocalPlayer
+               local ohString4 = (VoteText)
+              local ohString5 = "restart"
+
+             game:GetService("ReplicatedStorage").remote.Voting.Start.VoteToStart:FireServer(ohInstance2, ohString4, ohString5)
+              end
+              end
+end)
+
+local MainSection = MainTab:AddSection({
+	Name = "Main Section (for other stuff)"
+})
+
+MainSection:AddDropdown({
+	Name = "Give Guns",
+	Default = "Walter",
+	Options = {"Walter", "AWM", "Barrett", "Magnum", "Vector", "MAC-10", "UMP-45", "P90", "SMOKEgrenade", "HEgrenade", "FLASHgrenade", "G17", "USP", "Berettas", "TEC-9", "M1911", "R8", "Renetti", "P250", "Deagle", "FN FAL", "AK47", "M4A1", "M4", "Mosin", "Beamer", "Barrel", "STAS-12", "M249"},
+	Callback = function(Value)
+	local team = t
+	wait(0.1)
+local args = {
+    [1] = "afk",
+    [2] = true
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("remote"):WaitForChild("Player"):FireServer(unpack(args))
+	wait(0.1)
+		local args = {
+                [1] = (Value)
+               }
+
+           game:GetService("ReplicatedStorage"):WaitForChild("remote"):WaitForChild("PickUp"):FireServer(unpack(args))
+           wait(0.5)
+            local ohString69420 = "team"
+            local ohString29442 = team
+
+            game:GetService("ReplicatedStorage").remote.Player:FireServer(ohString69420, ohString29442)
+	end    
+})
+
+MainSection:AddLabel("(you have to join back your team through the menu) ^^")
+MainSection:AddButton({
+	Name = "Run (hold shift) (noclips sometimes)",
+	Callback = function()
+      		loadstring(game:HttpGet('https://raw.githubusercontent.com/wrykid/sciripts/main/skiddedwalkspeedbypass'))()
+  	end    
+})
